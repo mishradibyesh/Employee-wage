@@ -1,6 +1,9 @@
 import random
-print("Welcome to EMPLOYEE WAGE COMPUTAION PROGRAM")
-is_present = random.randint(0,3)
+"""
+Developing employee Wage Computation Application.
+checking if employee is present or absent 
+"""
+is_present = random.randint(0,2)
 if(is_present == 1):
 	print("Employee is present")
 else:
