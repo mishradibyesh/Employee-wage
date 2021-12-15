@@ -1,10 +1,14 @@
-import random
 """
 Developing employee Wage Computation Application.
-checking if employee is present or absent 
+calculating daily wage if employee is present
 """
+import random
 is_present = random.randint(0,2)
-if(is_present == 1):
-	print("Employee is present")
+salary = 0
+if is_present == 1:
+	full_day_hour = 8
+	wage_per_hour = 20
+	salary = salary + (wage_per_hour * full_day_hour)
+	print(f"Employee is present and his today's income is {salary}")
 else:
-	print("Employee is absent")
+	print(f"Employee is absent and  his today's income is {salary}")
