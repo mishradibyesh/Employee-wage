@@ -41,7 +41,7 @@ class EmployeeWage:
         self.print_details(company,salary)
 
     def print_details(self,company,salary):
-        print(f"Employee of {company} is earning monthly {salary}")
+        print(f"Employee of {company} is earning monthly  {salary}")
 
 
 employee1 = EmployeeWage("amazon", 23, 25, 90)
