@@ -15,7 +15,11 @@ class EmployeeWage:
     def __init__(self, *employee_data):
         total_employee_hour = 0
         working_day = 0
-        while working_day < employee_data[2] and total_employee_hour <= employee_data[3]:
+        company = employee_data[0]
+        wage_per_hour = employee_data[1]
+        total_working_day = employee_data[2]
+        total_working_hours = employee_data[3]
+        while working_day < total_working_day and total_employee_hour <= total_working_hours:
             working_day += 1
             emp_type = random.randint(0, 3)
             if emp_type == 1:
@@ -28,17 +32,16 @@ class EmployeeWage:
                 print(f"on day {working_day} Employee is absent ")
                 employee_hour = 0
             total_employee_hour += employee_hour
-            if total_employee_hour > employee_data[3]:
+            if total_employee_hour > total_working_hours:
                 total_employee_hour -= employee_hour
                 break
-        salary = employee_data[1] * total_employee_hour
+        salary = wage_per_hour * total_employee_hour
         print(f"Monthly Income is {salary}")
         print(f"Total working Hours is {total_employee_hour}")
-        company =employee_data[0]
         self.print_details(company,salary)
 
     def print_details(self,company,salary):
-        print(f"Employee of {company} is earning monthly {salary}")
+        print(f"Employee of {company} is earning monthly  {salary}")
 
 
 employee1 = EmployeeWage("amazon", 23, 25, 90)
