@@ -5,6 +5,7 @@ implementing object-oriented paradigm
 finding wages of employees from different companies
 using instance variable instead of function parameter
 ability to manage employee wage of multiple companies
+storing daily wage of the employee
 """
 import random
 
@@ -21,6 +22,7 @@ class EmployeeWage:
         self.total_working_day = employee_data[2]
         self.total_working_hours = employee_data[3]
     def calculate_emp_wage(self):
+        self.daily_wage_list = []
         while self.working_day < self.total_working_day and self.total_employee_hour <= self.total_working_hours:
             self.working_day += 1
             emp_type = random.randint(0, 3)
@@ -37,6 +39,8 @@ class EmployeeWage:
             if self.total_employee_hour > self.total_working_hours:
                 self.total_employee_hour -= employee_hour
                 break
+            self.daily_wage = self.wage_per_hour * employee_hour
+            self.daily_wage_list.append(self.daily_wage)
         self.salary = self.wage_per_hour * self.total_employee_hour
         print(f"Monthly Income is {self.salary}")
         print(f"Total working Hours is {self.total_employee_hour}")
@@ -46,7 +50,7 @@ class EmployeeWage:
         print(f"Employee of {company} is earning monthly  {salary}")
 
     def __str__(self):
-        return self.company + "  " + str(self.salary)
+        return "\n"+"Company Name : "+self.company +", DailyWage:"+str(self.daily_wage_list) + "  "+" , Monthly wage : "+ str(self.salary) + "\n"
 
 
 employee1 = EmployeeWage("amazon", 23, 25, 90)
@@ -57,6 +61,4 @@ employee_detail_list = []
 employee_detail_list.append(employee1)
 employee_detail_list.append(employee2)
 print(f"{employee_detail_list[0]}  " + f"{employee_detail_list[1]}")
-
-
 
