@@ -6,6 +6,7 @@ finding wages of employees from different companies
 using instance variable instead of function parameter
 ability to manage employee wage of multiple companies
 storing daily wage of the employee
+searching and displaying monthly employee wage by company  name
 """
 import random
 
@@ -55,10 +56,24 @@ class EmployeeWage:
 
 employee1 = EmployeeWage("amazon", 23, 25, 90)
 employee1.calculate_emp_wage()
-employee2 = EmployeeWage("Flipkart", 22, 24, 80)
+employee2 = EmployeeWage("flipkart", 22, 24, 80)
 employee2.calculate_emp_wage()
 employee_detail_list = []
 employee_detail_list.append(employee1)
 employee_detail_list.append(employee2)
 print(f"{employee_detail_list[0]}  " + f"{employee_detail_list[1]}")
 
+# method to display empWage by company name
+
+
+def query_by_company_name():
+    company_name = input("enter the company name : ")
+    for i in range(len(employee_detail_list)):
+      if company_name.lower() == (employee_detail_list[i].company):
+          print("Monthly salary : "+str(employee_detail_list[i].salary))
+          break
+      else:
+          print("please enter valid company name")
+
+
+query_by_company_name()
