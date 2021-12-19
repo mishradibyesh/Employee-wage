@@ -1,40 +1,46 @@
 """
 Developing employee Wage Computation Application.
-calculating daily wage for a employee till a certain condition
-implementing object-oriented paradigm
-finding wages of employees from different companies
-using instance variable instead of function parameter
-ability to manage employee wage of multiple companies
-storing daily wage of the employee
-searching and displaying monthly employee wage by company  name
 """
 import random
 
 
 class EmployeeWage:
+    """
+    calculating daily wage for a employee till a certain condition
+    implementing object-oriented paradigm
+    finding wages of employees from different companies :
+    ability to manage employee wage of multiple companies
+    """
     FULL_TIME_HOUR = 8
     PART_TIME_HOUR = 4
     total_employee_hour = 0
     working_day = 0
 
-    def __init__(self, *employee_data):
-        self.company = employee_data[0]
-        self.wage_per_hour = employee_data[1]
-        self.total_working_day = employee_data[2]
-        self.total_working_hours = employee_data[3]
+    def __init__(self, company , wage_per_hour , total_working_day , total_working_hours):
+        """
+            desc: constructor to initialize variables
+            parameters : company , wage_per_hour , total_working_day , total_working_hours:
+        """
+        self.company = company
+        self.wage_per_hour = wage_per_hour
+        self.total_working_day = total_working_day
+        self.total_working_hours = total_working_hours
+
     def calculate_emp_wage(self):
-        self.daily_wage_list = []
+        """
+            desc: calculate daily wages and monthly wages of employee
+            param: emp_check:
+            return: employee hour(int value)
+        """
+        self.daily_wage_list = []   
         while self.working_day < self.total_working_day and self.total_employee_hour <= self.total_working_hours:
             self.working_day += 1
-            emp_type = random.randint(0, 3)
+            emp_type = random.randint(0, 2)
             if emp_type == 1:
                 employee_hour = self.FULL_TIME_HOUR
-                print(f"on day {self.working_day} Employee is Full time ")
             elif emp_type == 2:
                 employee_hour = self.PART_TIME_HOUR
-                print(f"on day {self.working_day} Employee is Part time ")
             else:
-                print(f"on day {self.working_day} Employee is absent ")
                 employee_hour = 0
             self.total_employee_hour += employee_hour
             if self.total_employee_hour > self.total_working_hours:
@@ -43,37 +49,13 @@ class EmployeeWage:
             self.daily_wage = self.wage_per_hour * employee_hour
             self.daily_wage_list.append(self.daily_wage)
         self.salary = self.wage_per_hour * self.total_employee_hour
-        print(f"Monthly Income is {self.salary}")
-        print(f"Total working Hours is {self.total_employee_hour}")
-        self.print_details(self.company,self.salary)
 
-    def print_details(self,company,salary):
-        print(f"Employee of {company} is earning monthly  {salary}")
 
     def __str__(self):
-        return "\n"+"Company Name : "+self.company +", DailyWage:"+str(self.daily_wage_list) + "  "+" , Monthly wage : "+ str(self.salary) + "\n"
+        """
+        overriding __str__ method to return company name ,daily wage and monthly wage
+        """
+        
+        return "\n" + "Company Name : " + self.company + ", DailyWage:" + str(
+            self.daily_wage_list) + "  " + " , Monthly wage : " + str(self.salary)
 
-
-employee1 = EmployeeWage("amazon", 23, 25, 90)
-employee1.calculate_emp_wage()
-employee2 = EmployeeWage("flipkart", 22, 24, 80)
-employee2.calculate_emp_wage()
-employee_detail_list = []
-employee_detail_list.append(employee1)
-employee_detail_list.append(employee2)
-print(f"{employee_detail_list[0]}  " + f"{employee_detail_list[1]}")
-
-# method to display empWage by company name
-
-
-def query_by_company_name():
-    company_name = input("enter the company name : ")
-    for i in range(len(employee_detail_list)):
-      if company_name.lower() == (employee_detail_list[i].company):
-          print("Monthly salary : "+str(employee_detail_list[i].salary))
-          break
-      else:
-          print("please enter valid company name")
-
-
-query_by_company_name()
