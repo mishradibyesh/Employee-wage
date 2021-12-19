@@ -4,7 +4,7 @@ Developing employee Wage Computation Application.
 import random
 
 
-class EmployeeWage:
+class EmployeeWageCalculator:
     """
     calculating daily wage for a employee till a certain condition
     implementing object-oriented paradigm
@@ -17,10 +17,6 @@ class EmployeeWage:
     working_day = 0
 
     def __init__(self, company , wage_per_hour , total_working_day , total_working_hours):
-        """
-            desc: constructor to initialize variables
-            parameters : company , wage_per_hour , total_working_day , total_working_hours:
-        """
         self.company = company
         self.wage_per_hour = wage_per_hour
         self.total_working_day = total_working_day
