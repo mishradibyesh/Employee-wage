@@ -4,7 +4,17 @@ Developing employee Wage Computation Application.
 import random
 
 
-class EmployeeWageCalculator:
+class Company:
+    """
+    initiating the class members by init method
+    """
+    def __init__(self, company, wage_per_hour, total_working_day, total_working_hours):
+        self.company = company
+        self.wage_per_hour = wage_per_hour
+        self.total_working_day = total_working_day
+        self.total_working_hours = total_working_hours
+
+class EmployeeWageCalculator(Company):
     """
     calculating daily wage for a employee till a certain condition
     implementing object-oriented paradigm
@@ -15,12 +25,6 @@ class EmployeeWageCalculator:
     PART_TIME_HOUR = 4
     total_employee_hour = 0
     working_day = 0
-
-    def __init__(self, company , wage_per_hour , total_working_day , total_working_hours):
-        self.company = company
-        self.wage_per_hour = wage_per_hour
-        self.total_working_day = total_working_day
-        self.total_working_hours = total_working_hours
 
     def calculate_emp_wage(self):
         """
@@ -45,7 +49,6 @@ class EmployeeWageCalculator:
             self.daily_wage = self.wage_per_hour * employee_hour
             self.daily_wage_list.append(self.daily_wage)
         self.salary = self.wage_per_hour * self.total_employee_hour
-
 
     def __str__(self):
         """
