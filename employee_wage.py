@@ -2,17 +2,8 @@
 Developing employee Wage Computation Application.
 """
 import random
+from employee_builder import Company
 
-
-class Company:
-    """
-    initiating the class members by init method
-    """
-    def __init__(self, company, wage_per_hour, total_working_day, total_working_hours):
-        self.company = company
-        self.wage_per_hour = wage_per_hour
-        self.total_working_day = total_working_day
-        self.total_working_hours = total_working_hours
 
 class EmployeeWageCalculator(Company):
     """
@@ -54,7 +45,19 @@ class EmployeeWageCalculator(Company):
         """
         overriding __str__ method to return company name ,daily wage and monthly wage
         """
-        
         return "\n" + "Company Name : " + self.company + ", DailyWage:" + str(
             self.daily_wage_list) + "  " + " , Monthly wage : " + str(self.salary)
 
+
+employee1 = EmployeeWageCalculator("amazon", 23, 25, 90)
+employee1.calculate_emp_wage()
+employee1.add_employee_details(employee1)
+employee2 = EmployeeWageCalculator("flipkart", 22, 24, 80)
+employee2.calculate_emp_wage()
+employee2.add_employee_details(employee2)
+employee2.display_details()
+
+try:
+    employee2.query_by_company_name()
+except WrongInputException as exception:
+    print(exception)
